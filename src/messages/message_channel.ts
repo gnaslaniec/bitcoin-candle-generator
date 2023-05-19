@@ -8,8 +8,8 @@ export async function createMessageChannel(): Promise<Channel> {
         const connection = await connect(process.env.AMQP_SERVER);
         const channel = await connection.createChannel();
         await channel.assertQueue(process.env.QUEUE_NAME);
-        return channel;
         console.log('Connected to RabbitMQ');
+        return channel;
     } catch (error) {
         console.log(error);
         return null
